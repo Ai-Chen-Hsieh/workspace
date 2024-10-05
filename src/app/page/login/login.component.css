@@ -1,0 +1,23 @@
+:host { 
+  height: 100%;
+}
+
+.login-card {
+  max-width: 500px;
+  margin: 10% auto 0 auto;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-action {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em
+}
+
+.btn-100 {
+  width: 100%
+}
