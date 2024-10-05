@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="margin-left: 1.5em">My Todo App </span>
+  <button mat-button routerLink="/login" class="logout">Logout</button>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #drawer opened="true" mode="side" class="drawer">
+      <mat-nav-list>
+        @for (item of menulist; track $index) {
+          <mat-list-item>
+              <a href={{item.menu}} routerLinkActive="active">
+                <button mat-button>
+                  <mat-icon>{{item.icon}}</mat-icon>{{item.menu}}
+                </button>
+              </a>
+          </mat-list-item>
+        }
+      </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content style="padding: 0 1.2em;">
+      <div style="text-align: center;min-height: 600px;">
+        <app-todo-list></app-todo-list>
+      </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
