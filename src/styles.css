@@ -16,3 +16,12 @@ ul, li {
 .d-flex {
   display: flex;
 }
+
+/* snackbar */
+.error > .mat-mdc-snackbar-surface {
+  background-color: #f44336 !important;
+}
+
+.success > .mat-mdc-snackbar-surface {
+  background-color: #2e7d32 !important;
+}
