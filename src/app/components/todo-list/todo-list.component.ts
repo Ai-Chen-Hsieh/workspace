@@ -15,7 +15,7 @@ export interface Task {
   standalone: true,
   imports: [CommonModule,MaterialModule],
   templateUrl: './todo-list.component.html',
-  styleUrl: './todo-list.component.css'
+  styleUrl: './todo-list.component.scss'
 })
 export class TodoListComponent{
 

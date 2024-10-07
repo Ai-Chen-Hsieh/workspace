@@ -1,4 +1,4 @@
-<h1>My Todo List</h1>
+<h1 style="text-align: center;">My Todo List</h1>
 
 <form class="todoForm" (submit)="$event.preventDefault()">
   <mat-form-field class="w-100">
@@ -27,9 +27,9 @@
     </ul>
     <div class="active-panel">
       <span class=""> {{todosService.completedLeft()}} items left</span>
-      <button mat-button type="button" color="primary" style="margin-left:1em" (click)="changeFilterStatus(TaskFilterStatus.All)">all</button>
-      <button mat-button type="button" color="primary" (click)="changeFilterStatus(TaskFilterStatus.Active)">active</button>
-      <button mat-button type="button" color="warn" (click)="changeFilterStatus(TaskFilterStatus.Completed)">Completed</button>
+      <button mat-button type="button" color="primary" (click)="changeFilterStatus(TaskFilterStatus.All)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.All }">all</button>
+      <button mat-button type="button" color="primary" (click)="changeFilterStatus(TaskFilterStatus.Active)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Active }">active</button>
+      <button mat-button type="button" color="warn" (click)="changeFilterStatus(TaskFilterStatus.Completed)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Completed }">Completed</button>
     </div>
   </div>
 </form>
