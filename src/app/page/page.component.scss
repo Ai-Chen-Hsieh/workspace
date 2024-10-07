@@ -1,0 +1,34 @@
+
+.toolbar {
+  display: flex;
+  background-color: #d7e3ff;
+}
+
+.sideNav {
+  width: fit-content;
+  padding: 0 0.5em;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
+}
+
+.logout {
+  margin-left: auto;
+}
+
+.list-item{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #005cbb;
+  gap: 0.5em;
+}
+
+.expanded {
+  width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  .drawer {
+    min-width:auto;
+  }
+}
