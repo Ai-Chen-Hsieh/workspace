@@ -10,7 +10,7 @@ import { TodoListComponent } from '../../components/todo-list/todo-list.componen
   standalone: true,
   imports: [MaterialModule, ReactiveFormsModule, RouterModule, TodoListComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
