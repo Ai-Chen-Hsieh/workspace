@@ -5,7 +5,7 @@
     <mat-label>Todo....</mat-label>
     <div class="d-flex">
       <input matInput placeholder="write something..." (keyup.enter)="add(inputRef.value, inputRef)" #inputRef>
-      <button mat-icon-button type="button" color="primary" style="margin-left:1em" (click)="add(inputRef.value, inputRef)"><mat-icon>add</mat-icon></button>
+      <button mat-icon-button type="button" style="margin-left:1em" (click)="add(inputRef.value, inputRef)"><mat-icon>add</mat-icon></button>
     </div>
   </mat-form-field>
 
@@ -17,19 +17,19 @@
             <input type="text" style="width: 80%;" matInput [value]="item.name" (keyup)="changeText($event)" (keyup.enter)="editTodo(item.id)" #InputRef/>
           } @else {
             <mat-checkbox [checked]="item.completed" (change)="update($event.checked, i)">
-              <span [ngClass]="{'completed': item.completed}">{{item.name}}</span>            
+              <span [ngClass]="{'completed': item.completed}" matListItemLine >{{item.name}}</span>            
             </mat-checkbox>
           }
-          <button mat-icon-button type="button" color="primary" style="margin-left: auto" (click)="setEditingId(item.id)"><mat-icon>edit</mat-icon></button>
-          <button mat-icon-button type="button" color="second" (click)="deleteTodo(item.id)"><mat-icon>delete</mat-icon></button>
+          <button mat-icon-button type="button" style="margin-left: auto" (click)="setEditingId(item.id)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button type="button" (click)="deleteTodo(item.id)"><mat-icon>delete</mat-icon></button>
         </li>
       }
     </ul>
     <div class="active-panel">
-      <span class=""> {{todosService.completedLeft()}} items left</span>
-      <button mat-button type="button" color="primary" (click)="changeFilterStatus(TaskFilterStatus.All)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.All }">all</button>
-      <button mat-button type="button" color="primary" (click)="changeFilterStatus(TaskFilterStatus.Active)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Active }">active</button>
-      <button mat-button type="button" color="warn" (click)="changeFilterStatus(TaskFilterStatus.Completed)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Completed }">Completed</button>
+      <span style="margin-right: auto"> {{todosService.completedLeft()}} items left</span>
+      <button mat-button type="button" (click)="changeFilterStatus(TaskFilterStatus.All)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.All }">All</button>
+      <button mat-button type="button" (click)="changeFilterStatus(TaskFilterStatus.Active)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Active }">Active</button>
+      <button mat-button type="button" (click)="changeFilterStatus(TaskFilterStatus.Completed)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Completed }">Completed</button>
     </div>
   </div>
 </form>

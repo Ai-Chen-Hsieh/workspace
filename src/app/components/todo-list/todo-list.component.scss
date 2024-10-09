@@ -7,7 +7,7 @@
   display: flex;
   text-align: left;
   padding: 0.5em 0;
-  border-bottom: 1px solid grey
+  border-bottom: 1px solid grey;
 }
 
 .completed {
@@ -15,6 +15,8 @@
 }
 
 .active-panel{
+  display: flex;
+  align-items: center;
   margin-top: 0.5em;
   text-align: left;
 }
