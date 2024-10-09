@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"todo_ngrx": {
+		"workspace": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -17,7 +17,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:application",
 					"options": {
-						"outputPath": "dist/todo_ngrx",
+						"outputPath": "dist/workspace",
 						"index": "src/index.html",
 						"browser": "src/main.ts",
 						"polyfills": [
@@ -64,10 +64,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "todo_ngrx:build:production"
+							"buildTarget": "workspace:build:production"
 						},
 						"development": {
-							"buildTarget": "todo_ngrx:build:development"
+							"buildTarget": "workspace:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
