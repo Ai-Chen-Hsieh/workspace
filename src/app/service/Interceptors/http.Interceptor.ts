@@ -2,11 +2,14 @@ import { HttpEvent, HttpEventType, HttpHandlerFn, HttpRequest } from "@angular/c
 import { catchError, Observable, tap, throwError } from "rxjs";
 
 export function httpInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-  req.clone({ 
-    headers: req.headers.set('Content-Type', 'application/json')
-   });
+  const token = localStorage.getItem('token') ?? '';
+  const clonedRequest = req.clone({
+    headers: req.headers
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
+  })
    
-  return next(req).pipe(
+  return next(clonedRequest).pipe(
     tap(event => {
       if (event.type === HttpEventType.Response) {
         console.log(req.url, 'returned a response with status', event.status);

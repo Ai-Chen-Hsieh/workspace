@@ -14,14 +14,4 @@ import { TodoListComponent } from '../../components/todo-list/todo-list.componen
 })
 export class HomeComponent {
 
-  menulist = [
-    {
-      icon: 'home',
-      menu: 'home'
-    },
-    {
-      icon: 'person',
-      menu: 'user'
-    }
-  ]
 }

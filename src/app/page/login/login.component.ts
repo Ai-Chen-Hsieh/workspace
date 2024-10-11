@@ -1,8 +1,11 @@
+import { UserSharedService } from './../../shared.signal/user.shared';
 import { LoginService } from './../../service/login.service';
 import { Component, inject } from '@angular/core';
 import { MaterialModule } from '../../shared/material/material';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SnackbarService } from '../../service/snackbar.service';
+import { Router } from '@angular/router';
+import { userInfo } from '../../model/user.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,9 @@ export class LoginComponent {
 
   private _snackBar = inject(SnackbarService);
   private _builder = inject(FormBuilder);
+  private _router = inject(Router);
   private loginService = inject(LoginService);
+  private UserSharedService = inject(UserSharedService);
 
   loginform!: FormGroup;
   showPassword = false;
@@ -37,11 +42,23 @@ export class LoginComponent {
       return
     } 
 
-    this.loginService.login(this.loginform.value)
-    .subscribe({
-      next: (res) => console.log('res', res),
-      error: (err) => console.error('Error:', err)
-    });  
+    this.loginService.login(this.loginform.getRawValue())
+      .subscribe({
+        next: (res) => {
+          const data = res as userInfo;
+          localStorage.setItem('token', data.accessToken);
+          this.UserSharedService.userSignal.set(data);
+          this._router.navigate(['home'])
+        },
+        error: (err) => {
+          switch(err.status){
+            case 400:
+              this._snackBar.error('Invalid Username or Password');
+              break
+          }
+          console.error('Error:', this._snackBar.error(err))
+        }
+      });  
     
   }
 }
