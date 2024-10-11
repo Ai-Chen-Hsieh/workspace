@@ -11,5 +11,5 @@ import { PageComponent } from "./page/page.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'todo_ngrx';
+  title = 'workspace';
 }
