@@ -18,12 +18,17 @@ export class LoginComponent {
   private loginService = inject(LoginService);
 
   loginform!: FormGroup;
+  showPassword = false;
   
   ngOnInit(): void {
     this.loginform = this._builder.nonNullable.group({
       username: this._builder.control('', Validators.required),
       password: this._builder.control('', Validators.required)
     })
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
   login(){
