@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from "@angular/core";
 import { userLoginInfo } from '../model/user.model';
+import { environment } from '../environment/environment';
 
 @Injectable({
   providedIn: "root"
@@ -8,7 +9,7 @@ import { userLoginInfo } from '../model/user.model';
 
 export class LoginService {
   private http = inject(HttpClient);
-  private url = 'https://dummyjson.com/';
+  url = environment.api;
 
   login(userInfo: userLoginInfo) {
     return this.http.post(`${this.url}user/login`, userInfo)

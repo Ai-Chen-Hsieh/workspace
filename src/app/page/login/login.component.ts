@@ -48,7 +48,7 @@ export class LoginComponent {
           const data = res as userInfo;
           localStorage.setItem('token', data.accessToken);
           this.UserSharedService.userSignal.set(data);
-          this._router.navigate(['home'])
+          this._router.navigate(['page']);
         },
         error: (err) => {
           switch(err.status){

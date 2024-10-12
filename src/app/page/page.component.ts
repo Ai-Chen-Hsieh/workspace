@@ -30,7 +30,7 @@ import { HomeComponent } from "./home/home.component";
         <mat-nav-list>
           @for (item of menulist; track $index) {
             <mat-list-item>
-                <a [routerLink]="'/' + item.menu" class="list-item" (click)="closeMenu()">
+                <a [routerLink]="'/' + item.url" class="list-item">
                     <mat-icon>{{item.icon}}</mat-icon>
                     @if (!isCollapsed) {
                       <span>{{item.menu}}</span>
@@ -53,11 +53,13 @@ export class PageComponent {
   menulist = [
     {
       icon: 'home',
-      menu: 'home'
+      menu: 'home',
+      url: 'page'
     },
     {
       icon: 'person',
-      menu: 'user'
+      menu: 'user',
+      url: 'page/user'
     }
   ];
 
@@ -109,9 +111,6 @@ export class PageComponent {
     }
   }
 
-  closeMenu(){
-    this.sidenav.close();
-  }
 
   logout(){
     localStorage.removeItem('token');
