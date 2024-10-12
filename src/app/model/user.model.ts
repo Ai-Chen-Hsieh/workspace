@@ -14,3 +14,12 @@ export interface userInfo {
   accessToken: string, 
   refreshToken: string  
 }
+
+export interface tableUserInfo {
+  No: number,
+  username: string;
+  age: number,
+  gender: string,
+  email: string,
+  phone: string,
+}
