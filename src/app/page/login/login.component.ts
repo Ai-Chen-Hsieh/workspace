@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SnackbarService } from '../../service/snackbar.service';
 import { Router } from '@angular/router';
 import { userInfo } from '../../model/user.model';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -42,23 +43,16 @@ export class LoginComponent {
       return
     } 
 
-    this.loginService.login(this.loginform.getRawValue())
-      .subscribe({
-        next: (res) => {
-          const data = res as userInfo;
-          localStorage.setItem('token', data.accessToken);
-          this.UserSharedService.userSignal.set(data);
-          this._router.navigate(['page']);
-        },
-        error: (err) => {
-          switch(err.status){
-            case 400:
-              this._snackBar.error('Invalid Username or Password');
-              break
-          }
-          console.error('Error:', this._snackBar.error(err))
-        }
-      });  
-    
+    this.loginService.login(this.loginform.getRawValue()).pipe(
+      catchError((err) => {
+        this._snackBar.error('Invalid Username or Password');
+        return throwError(() => new Error(err.error.message));
+      })
+    ).subscribe((res) => {
+      const data = res as userInfo;
+      localStorage.setItem('token', data.accessToken);
+      this.UserSharedService.userSignal.set(data);
+      this._router.navigate(['page']);
+    });  
   }
 }
