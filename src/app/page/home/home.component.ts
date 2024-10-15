@@ -1,6 +1,6 @@
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MaterialModule } from '../../shared/material/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoBaseComponent } from "../../components/todo-base/todo-base.component";
@@ -14,4 +14,8 @@ import { TodoBaseComponent } from "../../components/todo-base/todo-base.componen
 })
 export class HomeComponent {
 
+  router = inject(Router);
+  gotoPage(url:string){
+    this.router.navigate([`page/${url}`]);
+  }
 }

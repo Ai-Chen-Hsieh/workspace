@@ -1,5 +1,18 @@
 :host{
   display: block;
   width: 85%;
-  margin: 0 auto
+  margin: 1.5em auto
+}
+
+.card {
+  max-width: 300px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transform: scale(1,1);
+  transition: all 0.4s ease-in;
+
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.02,1.02);
+  }
 }

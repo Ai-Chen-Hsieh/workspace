@@ -57,6 +57,11 @@ export class PageComponent {
       url: 'page'
     },
     {
+      icon: 'list alt_check',
+      menu: 'todo list',
+      url: 'page/todo'
+    },
+    {
       icon: 'person',
       menu: 'user',
       url: 'page/user'

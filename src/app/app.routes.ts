@@ -5,6 +5,7 @@ import { PageComponent } from './page/page.component';
 import { AuthGuard } from './guard/auth.guard';
 import { UsersComponent } from './page/users/users.component';
 import { userResolver } from './@resolver/user.resolver';
+import { TodoBaseComponent } from './components/todo-base/todo-base.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'todo',
+        component: TodoBaseComponent,
       },
       {
         path: 'user',
