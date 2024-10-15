@@ -4,18 +4,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 # 使用技術
-Angular v18
-Angular material
-Signals
+- Angular v18
+- Angular material
+- Signals
 
 # 專案畫面
-![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/app/assets/login.png)
-![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/app/assets/main.png)
-![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/app/assets/main_dark.png)
+### [專案入口](https://workspace-ao6zag9in-aichenhsiehs-projects.vercel.app)
 
-測試帳號:
-帳號: emilys
-密碼: emilyspass
+#### 測試帳號:
+* 帳號: emilys
+* 密碼: emilyspass
+
+![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/assets/login.png)
+![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/assets/main.png)
+![workspace](https://github.com/Ai-Chen-Hsieh/workspace/blob/main/src/assets/main_dark.png)
+
 
 # 功能技術說明
 
