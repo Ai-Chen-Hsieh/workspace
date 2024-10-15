@@ -1,14 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
-import { MaterialModule } from '../../shared/material/material';
+import { MaterialModule } from '../../../shared/material/material';
 import { CommonModule } from '@angular/common';
-import { TodoService } from '../../service/todo.service';
-import { TaskFilterStatus } from '../../type/todo.type';
+import { TodoService } from '../../../service/todo.service';
+import { TaskFilterStatus } from '../../../type/todo.type';
 
-export interface Task {
-  name: string;
-  completed: boolean;
-  subtasks?: Task[];
-}
 
 @Component({
   selector: 'app-todo-list',
@@ -41,12 +36,6 @@ export class TodoListComponent{
     this.todoService.update(completed, index);
   }
 
-  all(){}
-
-  changeFilterStatus(status: TaskFilterStatus) {
-    this.todoService.changeFilterStatus(status);
-  }
-
   changeText(event:Event){
     const value = (event.target as HTMLInputElement).value;
     this.editingText = value;
@@ -56,23 +45,16 @@ export class TodoListComponent{
     this.editingId = null;
   }
 
-
   setEditingId(id: number | null) {
     this.editingId = id; 
   }
 
-
-  add(value: string, $event:any) {
-    if(value.trim().length === 0) {
-      return
-    }
-
-    this.todoService.addTodo(value);
-    $event.value = '';
-  }
-
   deleteTodo(id: number) {  
     this.todoService.deleteTodo(id);
+  }
+  
+  changeFilterStatus(status: TaskFilterStatus) {
+    this.todoService.changeFilterStatus(status);
   }
 
 }

@@ -1,0 +1,30 @@
+<div>
+  <h1 style="text-align: center;">My Todo List</h1>
+
+  <form class="todoForm" (submit)="$event.preventDefault()">
+    <div class="toggle-panel">    
+      <mat-button-toggle-group (change)="toggleViewMode($event)" [value]="'list'">
+        <mat-button-toggle value="list">list view</mat-button-toggle>
+        <mat-button-toggle value="board">board view</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  
+    <mat-form-field class="w-100">
+      <mat-label>Todo....</mat-label>
+      <div class="d-flex">
+        <input matInput placeholder="write something..." (keyup.enter)="add(inputRef.value, inputRef)" #inputRef>
+        <button mat-icon-button type="button" style="margin-left:1em" (click)="add(inputRef.value, inputRef)"><mat-icon>add</mat-icon></button>
+      </div>
+    </mat-form-field>
+  
+    <ng-container *ngTemplateOutlet="isDragBoardMode ? board : list"></ng-container>
+    
+    <ng-template #list>
+      <app-todo-list></app-todo-list>
+    </ng-template>
+    <ng-template #board>
+      <app-todo-list-board></app-todo-list-board>
+    </ng-template>
+  </form>
+  
+</div>

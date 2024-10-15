@@ -1,14 +1,3 @@
-<h1 style="text-align: center;">My Todo List</h1>
-
-<form class="todoForm" (submit)="$event.preventDefault()">
-  <mat-form-field class="w-100">
-    <mat-label>Todo....</mat-label>
-    <div class="d-flex">
-      <input matInput placeholder="write something..." (keyup.enter)="add(inputRef.value, inputRef)" #inputRef>
-      <button mat-icon-button type="button" style="margin-left:1em" (click)="add(inputRef.value, inputRef)"><mat-icon>add</mat-icon></button>
-    </div>
-  </mat-form-field>
-
   <div class="w-100">
     <ul>
       @for (item of visibleTodos(); track item; let i = $index) {
@@ -32,4 +21,5 @@
       <button mat-button type="button" (click)="changeFilterStatus(TaskFilterStatus.Completed)" [ngClass]="{'active': todosService.statusSignal() === TaskFilterStatus.Completed }">Completed</button>
     </div>
   </div>
-</form>
+
+

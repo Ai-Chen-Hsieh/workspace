@@ -7,16 +7,14 @@ import { Task } from "../model/todo.model";
 })
 
 export class TodoService {  
-  constructor() { } 
-
   allTodoSignal = signal(this.getTodoList());
   statusSignal = signal(TaskFilterStatus.All);
 
   getTodoList() {
     return [
-      {name: 'Child task 1', id:1, completed: false},
-      {name: 'Child task 2', id:2, completed: false},
-      {name: 'Child task 3', id:3, completed: false},
+      {name: 'Child task 1', id:1, completed: false, order: 1},
+      {name: 'Child task 2', id:2, completed: false , order: 2},
+      {name: 'Child task 3', id:3, completed: false , order: 3},
     ]
   };
 
@@ -40,6 +38,17 @@ export class TodoService {
     });
   };
 
+  dragUpdate(completed: boolean, id?: number, orderId?: number) {
+    this.allTodoSignal.update(task => {
+      task.forEach((t:Task) => {
+        if(t.id == id){
+          t.completed = completed;
+        }
+      })
+      return [...task]
+    });
+  }
+
   addTodo(todo:string){
     this.allTodoSignal.update((task) => {
       return [
@@ -47,7 +56,8 @@ export class TodoService {
         {
           name: todo,
           completed: false,
-          id: Math.floor(Math.random() * 1000000)
+          id: Math.floor(Math.random() * 1000000),
+          order: task.length
         }
       ]
     })

@@ -1,14 +1,14 @@
-import { Route, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { Component } from '@angular/core';
 import { MaterialModule } from '../../shared/material/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TodoListComponent } from '../../components/todo-list/todo-list.component';
+import { TodoBaseComponent } from "../../components/todo-base/todo-base.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule, RouterModule, TodoListComponent],
+  imports: [MaterialModule, ReactiveFormsModule, RouterModule, TodoBaseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
